@@ -1,0 +1,30 @@
+{
+  "name": "blog-list",
+  "version": "1.0.0",
+  "description": "Solutions for University of Helsinki's Full Stack Open 2020 - Part 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshAubrey/FullStackOpen2020-Part4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshAubrey/FullStackOpen2020-Part4/issues"
+  },
+  "homepage": "https://github.com/JoshAubrey/FullStackOpen2020-Part4#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7"
+  }
+}
