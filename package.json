@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,17 @@
   },
   "homepage": "https://github.com/JoshAubrey/FullStackOpen2020-Part4#readme",
   "devDependencies": {
+    "jest": "^26.4.2",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "lodash": "^4.17.20",
     "mongoose": "^5.10.7"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
