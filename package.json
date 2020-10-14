@@ -4,9 +4,9 @@
   "description": "Solutions for University of Helsinki's Full Stack Open 2020 - Part 4",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "jest --verbose"
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "test": "NODE_ENV=test jest --verbose --runInBand"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,8 @@
   "homepage": "https://github.com/JoshAubrey/FullStackOpen2020-Part4#readme",
   "devDependencies": {
     "jest": "^26.4.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^5.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
