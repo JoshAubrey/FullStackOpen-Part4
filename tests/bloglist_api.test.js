@@ -136,6 +136,21 @@ describe('addition of a new blog', () => {
     expect(response.statusCode).toEqual(400)
   })
 
+  test('if token is missing, it will respond with 401 Unauthorized', async () => {
+    const newBlog = {
+      title: "token missing",
+      author: "Robert C. Martin",
+      url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.html",
+    }
+  
+    const response = await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(401)
+    expect(response.statusCode).toEqual(401)
+  })
+
+
 })
 
 describe ('updating a blog', () => {
@@ -171,7 +186,7 @@ describe('deletion of a blog', () => {
       .post('/api/login')
       .send({username: 'root', password: 'sekret'})
     token = 'bearer ' + response.body.token
-    
+
     const newBlog = {
         title: "Canonical string reduction",
         author: "Edsger W. Dijkstra",
