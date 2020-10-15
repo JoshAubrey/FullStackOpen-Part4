@@ -1,9 +1,9 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-#Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1Zjg3ODBkNDJhNGFiZTA5MDVkYzcyOTciLCJpYXQiOjE2MDI3ODQ2NTJ9.rc9KdPur2zK4S3-tWB9PaUamMha2XueKwkvIFTOzam0
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1Zjg3ODBkNDJhNGFiZTA5MDVkYzcyOTciLCJpYXQiOjE2MDI3ODQ2NTJ9.rc9KdPur2zK4S3-tWB9PaUamMha2XueKwkvIFTOzam0
 
 {
-    "title": "Token Authorization",
+    "title": "Token Extractor",
     "author": "Matti Luukkainen",
     "url": "https://fullstackopen.com/en/",
     "likes": "1"

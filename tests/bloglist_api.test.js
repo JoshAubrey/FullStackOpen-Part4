@@ -66,6 +66,20 @@ describe('viewing a specific blog', () => {
 })
 
 describe('addition of a new blog', () => {
+  let token
+  beforeAll(async () => {
+    await User.deleteMany({})
+
+    const passwordHash = await bcrypt.hash('sekret', 10)
+    const user = new User({ username: 'root', passwordHash })
+
+    await user.save()
+
+    const response = await api
+      .post('/api/login')
+      .send({username: 'root', password: 'sekret'})
+    token = 'bearer ' + response.body.token
+  })
 
   test('a valid blog can be added', async () => {
     const newBlog = {
@@ -77,6 +91,7 @@ describe('addition of a new blog', () => {
   
     await api
       .post('/api/blogs')
+      .set('Authorization', token)
       .send(newBlog)
       .expect(201)
       .expect('Content-Type', /application\/json/)
@@ -100,6 +115,7 @@ describe('addition of a new blog', () => {
   
     const response = await api
       .post('/api/blogs')
+      .set('Authorization', token)
       .send(newBlog)
       .expect(201)
       .expect('Content-Type', /application\/json/)
@@ -114,6 +130,7 @@ describe('addition of a new blog', () => {
   
     const response = await api
       .post('/api/blogs')
+      .set('Authorization', token)
       .send(newBlog)
       .expect(400)
     expect(response.statusCode).toEqual(400)
@@ -140,6 +157,35 @@ describe ('updating a blog', () => {
 })
 
 describe('deletion of a blog', () => {
+  let token
+  beforeAll(async () => {
+    await User.deleteMany({})
+    await Blog.deleteMany({})
+
+    const passwordHash = await bcrypt.hash('sekret', 10)
+    const user = new User({ username: 'root', passwordHash })
+
+    await user.save()
+
+    const response = await api
+      .post('/api/login')
+      .send({username: 'root', password: 'sekret'})
+    token = 'bearer ' + response.body.token
+    
+    const newBlog = {
+        title: "Canonical string reduction",
+        author: "Edsger W. Dijkstra",
+        url: "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+        likes: 12,
+    }
+  
+    await api
+      .post('/api/blogs')
+      .set('Authorization', token)
+      .send(newBlog)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+  })
 
   test('a blog can be deleted', async () => {
     const blogsAtStart = await helper.blogsInDb()
@@ -147,6 +193,7 @@ describe('deletion of a blog', () => {
   
     await api
       .delete(`/api/blogs/${blogToDelete.id}`)
+      .set('Authorization', token)
       .expect(204)
   
     const blogsAtEnd = await helper.blogsInDb()
