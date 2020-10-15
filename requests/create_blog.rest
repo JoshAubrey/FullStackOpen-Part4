@@ -5,5 +5,6 @@ Content-Type: application/json
     "title": "Full Stack Open 2020",
     "author": "Matti Luukkainen",
     "url": "https://fullstackopen.com/en/",
-    "likes": "1"
+    "likes": "1",
+    "userId": "5f8780d42a4abe0905dc7297"
 }
